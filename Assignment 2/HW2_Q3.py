@@ -10,7 +10,7 @@ z = P.addVars(scenarios, cities, name='z')
 s = P.addVars(scenarios, cities, name='s')
 
 P.addConstr(x.sum() <= I)
-P.addConstrs(I + u.sum(o, '*') <= x.sum() + v.sum(o, '*') for o in scenarios)
+P.addConstrs(I + u.sum(o, '*') >= x.sum() + v.sum(o, '*') for o in scenarios)
 P.addConstrs(Yn[n] + x[n] + v[o, n] + s[o, n] == demand[n, o] + z[o, n] + u[o, n] 
             for n in cities
             for o in scenarios)
